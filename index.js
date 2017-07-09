@@ -6,7 +6,7 @@ function randomItem (list)
 
 var ws = {};
 
-ws.data = { };
+ws.data = {};
 
 if (typeof localStorage.movieList === 'undefined') {
   document.getElementById("list").innerHTML.split(",").forEach(function(i){ ws.data[i] = {movie:i, done: false }});
@@ -87,6 +87,13 @@ function getList() {
   document.getElementById("editTask").focus(); 
   }
 }
+
+function delItems() {
+  ws.data = {};  
+
+  getList();
+}
+
 function bindAction(el,a) {
   if(el.hasOwnProperty() == false) {  
 
