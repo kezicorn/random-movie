@@ -9,13 +9,13 @@ var ws = {};
 ws.data = { };
 
 if (typeof localStorage.movieList === 'undefined') {
-  document.getElementById("list").innerHTML.split(",").forEach(function(i){ ws.data[i] = {name:i, done: false }});
+  document.getElementById("list").innerHTML.split(",").forEach(function(i){ ws.data[i] = {movie:i, done: false }});
 } else {
   ws.data = JSON.parse(localStorage.movieList);
 }
 
 function spinItem() {
-    document.getElementById("result").innerHTML = randomItem(Object.keys(ws.data));
+    document.getElementById("result").innerHTML = ws.data[randomItem(Object.keys(ws.data))]["movie"];
 }
 
 
@@ -24,7 +24,7 @@ var oEl = document.getElementById("container");;
 function renderTask(id, task){
   var o = '';
 
-  o+= '<tr data="'+id+'"><td class="js-edit">Movie: </td><td>'+task.name+'</td><td>';
+  o+= '<tr data="'+id+'"><td class="js-edit">Movie: </td><td>'+task.movie+'</td><td>';
   if(task.done){
     o+='Watched';
   } else {
@@ -78,7 +78,7 @@ function getList() {
   }
 
   document.getElementById("newTask").addEventListener("change",function(e){
-    ws.data["task-"+zen] = {"name":document.getElementById("newTask").value,done: false};
+    ws.data["task-"+zen] = {"movie":document.getElementById("newTask").value,done: false};
     saveList();
     getList();
   });
