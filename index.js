@@ -8,7 +8,11 @@ var ws = {};
 
 ws.data = { };
 
-document.getElementById("list").innerHTML.split(",").forEach(function(i){ ws.data[i] = {name:i, done: false }});
+if (typeof localStorage.movieList === 'undefined') {
+  document.getElementById("list").innerHTML.split(",").forEach(function(i){ ws.data[i] = {name:i, done: false }});
+} else {
+  ws.data = JSON.parse(localStorage.movieList);
+}
 
 function spinItem() {
     document.getElementById("result").innerHTML = randomItem(Object.keys(ws.data));
@@ -53,6 +57,10 @@ function editTask(el){
   return o;
 }
 
+function saveList() {
+  localStorage.movieList = JSON.stringify(ws.data);
+}
+
 function getList() {
   oEl.innerHTML = renderList(ws.data);
   var p = document.getElementsByTagName("tr");
@@ -71,6 +79,7 @@ function getList() {
 
   document.getElementById("newTask").addEventListener("change",function(e){
     ws.data["task-"+zen] = {"name":document.getElementById("newTask").value,done: false};
+    saveList();
     getList();
   });
   if(document.getElementById("editTask") == null) {
