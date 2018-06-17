@@ -13,17 +13,8 @@
             </td><td>To Watch</td></tr></tbody></table></div>
  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.6/css/dragtable.mod.min.css"></script>
-    <script>$(document).ready(function() { 
-    $("table").tablesorter(); 
-    $("#trigger-link").click(function() { 
-        // set sorting column and direction, this will sort on the first and third column the column index starts at zero 
-        var sorting = [[0,0],[2,0]]; 
-        // sort on the first column 
-        $("table").trigger("sorton",[sorting]); 
-        // return false to stop default link action 
-        return false; 
-    }); 
-        });</script>
+    <script>$(document).ready(function() { $("table").tablesorter(); }); 
+    </script>
 <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
