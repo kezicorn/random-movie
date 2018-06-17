@@ -15,7 +15,8 @@ if (typeof localStorage.movieList === 'undefined') {
 }
 
 function spinItem() {
-    document.getElementById("result").innerHTML = ws.data[randomItem(Object.keys(ws.data))]["movie"];
+  var movId = ws.data[randomItem(Object.keys(ws.data))]["movie"];
+    document.getElementById("result").innerHTML = '<a href="https://www.google.co.uk/?&btnI=745&q=watch%20'+encodeURIComponent(movId)+'%20online%20free">'+movId+'</a>';
 }
 
 
